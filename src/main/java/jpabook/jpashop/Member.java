@@ -11,9 +11,9 @@ import lombok.Setter;
 @Setter
 public class Member {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
     private String username;
-
 
 }
