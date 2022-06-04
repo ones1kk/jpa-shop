@@ -33,14 +33,14 @@ public abstract class Item {
     private List<Category> categories = new ArrayList<>();
 
     /**
-     *  stock 증가
+     * stock 증가
      */
     public void addStock(int quantity) {
         this.stockQuantity += quantity;
     }
 
     /**
-     *  stock 감소
+     * stock 감소
      */
     public void minusStock(int quantity) {
         int restStock = (this.stockQuantity - quantity);
