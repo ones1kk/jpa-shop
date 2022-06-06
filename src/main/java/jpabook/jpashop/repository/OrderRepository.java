@@ -1,6 +1,5 @@
 package jpabook.jpashop.repository;
 
-import java.util.List;
 import javax.persistence.EntityManager;
 import jpabook.jpashop.domain.Order;
 import lombok.RequiredArgsConstructor;

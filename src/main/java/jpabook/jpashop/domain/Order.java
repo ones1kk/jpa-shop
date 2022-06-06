@@ -50,6 +50,20 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status; // ORDER, CANCEL
 
+    // ==생성 메서드==//
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+        for (OrderItem orderItem : orderItems) {
+            order.addOrderItem(orderItem);
+        }
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDateTime(LocalDateTime.now());
+
+        return order;
+    }
+
     // ==연관관계 메서드==//
     public void addOrder(Member member) {
         this.member = member;
@@ -66,21 +80,8 @@ public class Order {
         delivery.setOrder(this);
     }
 
-    // ==생성 메서드==//
-    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
-        Order order = new Order();
-        order.setMember(member);
-        order.setDelivery(delivery);
-        for (OrderItem orderItem : orderItems) {
-            order.addOrderItem(orderItem);
-        }
-        order.setStatus(OrderStatus.ORDER);
-        order.setOrderDateTime(LocalDateTime.now());
-
-        return order;
-    }
-
     // ==비즈니스 로직==//
+
     /**
      * 주문 취소
      */
@@ -97,6 +98,7 @@ public class Order {
     }
 
     // ==조회 로직==//
+
     /**
      * 전체 주문 가격 조회
      */
