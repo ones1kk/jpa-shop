@@ -41,7 +41,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public String order(@RequestParam Long memberId, @RequestParam Long itemId, @RequestParam int count) {
+    public String order(@RequestParam Long memberId, @RequestParam Long itemId,
+        @RequestParam int count) {
 
         orderService.order(memberId, itemId, count);
 
