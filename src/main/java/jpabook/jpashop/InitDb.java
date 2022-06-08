@@ -59,7 +59,7 @@ public class InitDb {
         }
 
         public void dbInit2() {
-            Member memberB= new Member();
+            Member memberB = new Member();
             memberB.setName("userB");
             memberB.setAddress(new Address("bb", "bb", "bb"));
             em.persist(memberB);
