@@ -1,19 +1,15 @@
 package jpabook.jpashop.api;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.validation.Valid;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,8 +25,8 @@ public class MemberApiController {
     @GetMapping("/api/v2/members")
     public Result<List<MemberDto>> membersV2() {
         List<MemberDto> collect = memberService.findMembers().stream()
-            .map(member -> new MemberDto(member.getName()))
-            .collect(Collectors.toList());
+                .map(member -> new MemberDto(member.getName()))
+                .collect(Collectors.toList());
         return new Result<>(collect.size(), collect);
     }
 
@@ -51,7 +47,7 @@ public class MemberApiController {
 
     @PutMapping("/api/v2/members/{id}")
     public UpdateMemberResponse updateMemberV2(@PathVariable Long id,
-        @RequestBody @Valid UpdateMemberRequest request) {
+                                               @RequestBody @Valid UpdateMemberRequest request) {
 
         memberService.update(id, request.getName());
 

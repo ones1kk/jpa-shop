@@ -1,8 +1,5 @@
 package jpabook.jpashop.api;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
@@ -12,6 +9,10 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * xToOne (ManyToOne, OneToOne) Order -> Member Order -> Delivery
@@ -30,7 +31,7 @@ public class OrderApiController {
     @GetMapping("/api/v2/simple-orders")
     public List<SimpleOrderDto> ordersV2() {
         return orderRepository.findAll(new OrderSearch()).stream().map(SimpleOrderDto::new)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/api/v3/simple-orders")
@@ -38,8 +39,8 @@ public class OrderApiController {
         List<Order> orders = orderRepository.findAllWithMemberDelivery();
 
         return orders.stream()
-            .map(SimpleOrderDto::new)
-            .collect(Collectors.toList());
+                .map(SimpleOrderDto::new)
+                .collect(Collectors.toList());
     }
 
     @Data
