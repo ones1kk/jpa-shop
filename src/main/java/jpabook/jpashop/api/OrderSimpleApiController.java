@@ -17,7 +17,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * xToOne (ManyToOne, OneToOne) Order -> Member Order -> Delivery
+ * xToOne (ManyToOne, OneToOne)
+ * Order -> Member
+ * Order -> Delivery
  */
 @RestController
 @RequiredArgsConstructor
