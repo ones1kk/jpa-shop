@@ -39,4 +39,14 @@ public class OrderQueryRepository {
                 "join o.member m " +
                 "join o.delivery d ", OrderQueryDto.class).getResultList();
     }
+    public List<OrderQueryDto> findAllBtDto_optimization() {
+        List<OrderQueryDto> result = findOrders();
+        List<Long> orderIds = toOrderIds(result);
+
+        Map<Long, List<OrderItemQueryDto>> orderItemMap = findOrderItemMap(orderIds);
+
+        result.forEach(o -> o.setOrderItems(orderItemMap.get(o.getOrderId())));
+
+        return result;
+    }
 }
